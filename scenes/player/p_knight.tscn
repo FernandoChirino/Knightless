@@ -1,0 +1,84 @@
+[gd_scene load_steps=12 format=3 uid="uid://rdmd2gjiyylt"]
+
+[ext_resource type="Texture2D" uid="uid://bm1sy6oquq8de" path="res://resources/Idle.png" id="1_sanfn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jl874"]
+atlas = ExtResource("1_sanfn")
+region = Rect2(0, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hro53"]
+atlas = ExtResource("1_sanfn")
+region = Rect2(128, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8rsk2"]
+atlas = ExtResource("1_sanfn")
+region = Rect2(0, 64, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ydrn"]
+atlas = ExtResource("1_sanfn")
+region = Rect2(128, 64, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_35jw3"]
+atlas = ExtResource("1_sanfn")
+region = Rect2(0, 128, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fkclx"]
+atlas = ExtResource("1_sanfn")
+region = Rect2(128, 128, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ni3j"]
+atlas = ExtResource("1_sanfn")
+region = Rect2(0, 192, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bsk22"]
+atlas = ExtResource("1_sanfn")
+region = Rect2(128, 192, 128, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xu8om"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jl874")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hro53")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8rsk2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ydrn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_35jw3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fkclx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ni3j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bsk22")
+}],
+"loop": true,
+"name": &"P_Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1shgi"]
+radius = 6.0
+height = 46.0
+
+[node name="PKnight" type="CharacterBody2D"]
+scale = Vector2(2, 2)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2, -32)
+sprite_frames = SubResource("SpriteFrames_xu8om")
+animation = &"P_Idle"
+autoplay = "P_Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -23)
+shape = SubResource("CapsuleShape2D_1shgi")

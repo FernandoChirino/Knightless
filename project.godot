@@ -11,5 +11,14 @@ config_version=5
 [application]
 
 config/name="experimento 1"
+run/main_scene="res://levels/main_test.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=648
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
