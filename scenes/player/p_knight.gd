@@ -11,24 +11,21 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 
 func _physics_process(delta):
-	var horizontal_dir = Input.get_axis("left", "right")
+	var left = Input.is_action_pressed("left")
+	var right = Input.is_action_pressed("right")
 	
-	movement(delta, horizontal_dir)
-	flip(horizontal_dir)
-
+	movement_flip(delta, left, right)
 	move_and_slide()
 
-func movement(delta, horizontal_dir):
-	if horizontal_dir:
-		velocity.x = horizontal_dir * SPEED * delta 
+func movement_flip(delta, left, right):
+	if left:
+		velocity.x = -1 * SPEED * delta 
 		animation_player.play("run")
+		player_sprite.flip_h = true
+	elif right: 
+		velocity.x = 1 * SPEED * delta 
+		animation_player.play("run")
+		player_sprite.flip_h = false 
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		animation_player.play("idle")
-
-func flip(horizontal_dir):
-	if horizontal_dir < 0:
-		player_sprite.flip_h = true 
-	else: 
-		player_sprite.flip_h = false
-		
