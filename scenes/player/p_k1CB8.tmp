@@ -175,7 +175,7 @@ _data = {
 [node name="PKnight" type="CharacterBody2D"]
 scale = Vector2(2, 2)
 script = ExtResource("1_m6mhs")
-SPEED = 18800
+SPEED = 10800
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-1, -32)
