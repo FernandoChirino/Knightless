@@ -17,7 +17,7 @@ radius = 8.5
 height = 43.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c6503"]
-size = Vector2(23, 41.5)
+size = Vector2(25.5, 41.5)
 
 [sub_resource type="Animation" id="Animation_kq4f7"]
 length = 0.001
@@ -889,6 +889,8 @@ _data = {
 
 [node name="PKnight_state" type="CharacterBody2D"]
 scale = Vector2(2, 2)
+collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_wvsi7")
 SPEED = 500.0
 
@@ -899,6 +901,8 @@ hframes = 2
 vframes = 4
 
 [node name="HitboxArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
 
 [node name="Hitbox" type="CollisionShape2D" parent="HitboxArea"]
 position = Vector2(11.5, -8.5)
@@ -907,15 +911,17 @@ shape = SubResource("CapsuleShape2D_1shgi")
 disabled = true
 
 [node name="FloorHitbox" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0.5, -21.5)
 shape = SubResource("CapsuleShape2D_1shgi")
 debug_color = Color(0.87451, 0.168627, 0.737255, 0.419608)
 
 [node name="AttackHitBoxArea" type="Area2D" parent="."]
 position = Vector2(24.5, -21.5)
+collision_layer = 2
+collision_mask = 4
 
 [node name="AttackHitBox" type="CollisionShape2D" parent="AttackHitBoxArea"]
+position = Vector2(1.25, 0)
 shape = SubResource("RectangleShape2D_c6503")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

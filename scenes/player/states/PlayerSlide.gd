@@ -11,6 +11,7 @@ func Physics_Update(delta):
 	else: 
 		parent.position.x -= 10 * delta 
 		$"../../AnimationPlayer".play('slide_hitbox_left')
+		
 	
 	if machine.slide_anim_finished:
 		Transitioned.emit(self, 'playeridle')

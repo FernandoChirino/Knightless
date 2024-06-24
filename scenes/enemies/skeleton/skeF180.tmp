@@ -1,0 +1,291 @@
+[gd_scene load_steps=17 format=3 uid="uid://dr2acwebrxxdo"]
+
+[ext_resource type="Texture2D" uid="uid://ddl0isdvld437" path="res://resources/Skeleton/Skeleton Idle.png" id="1_0p1yd"]
+[ext_resource type="Script" path="res://scenes/enemies/skeleton/skeleton.gd" id="1_fdjug"]
+[ext_resource type="Script" path="res://scenes/enemies/skeleton/StateMachine.gd" id="2_sg4yr"]
+[ext_resource type="Texture2D" uid="uid://d0fqm7i1xix7h" path="res://resources/Skeleton/Skeleton React.png" id="3_ivdea"]
+[ext_resource type="Script" path="res://scenes/enemies/skeleton/states/SkeletonIdle.gd" id="4_a5tl7"]
+[ext_resource type="Texture2D" uid="uid://dyr4uxgiy3fpq" path="res://resources/Skeleton/Skeleton Walk.png" id="4_hrgof"]
+[ext_resource type="Script" path="res://scenes/enemies/skeleton/states/SkeletonReact.gd" id="5_u3g33"]
+[ext_resource type="Script" path="res://scenes/enemies/skeleton/states/SkeletonWalk.gd" id="8_n73eg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kbdrl"]
+size = Vector2(18.4444, 26.1111)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tiguo"]
+size = Vector2(205, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gpbdy"]
+size = Vector2(14.037, 6)
+
+[sub_resource type="Animation" id="Animation_vhqub"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_0p1yd")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [11]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:vframes")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_84srx"]
+resource_name = "idle"
+length = 0.9
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_0p1yd")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [11]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:vframes")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_pcut3"]
+resource_name = "react"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_ivdea")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_nt7s5"]
+resource_name = "walk"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_hrgof")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [13]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 12]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_an1f0"]
+_data = {
+"RESET": SubResource("Animation_vhqub"),
+"idle": SubResource("Animation_84srx"),
+"react": SubResource("Animation_pcut3"),
+"walk": SubResource("Animation_nt7s5")
+}
+
+[node name="Skeleton" type="CharacterBody2D"]
+collision_layer = 4
+script = ExtResource("1_fdjug")
+
+[node name="HitBoxArea" type="Area2D" parent="."]
+scale = Vector2(2.7, 2.7)
+collision_layer = 4
+collision_mask = 2
+
+[node name="HitBox" type="CollisionShape2D" parent="HitBoxArea"]
+position = Vector2(2.22222, -12.963)
+shape = SubResource("RectangleShape2D_kbdrl")
+
+[node name="DetectionArea" type="Area2D" parent="."]
+scale = Vector2(2.7, 2.7)
+collision_layer = 4
+collision_mask = 2
+metadata/_edit_lock_ = true
+
+[node name="Detection" type="CollisionShape2D" parent="DetectionArea"]
+position = Vector2(-1.48148, -11.8519)
+shape = SubResource("RectangleShape2D_tiguo")
+metadata/_edit_lock_ = true
+
+[node name="FloorHitBox" type="CollisionShape2D" parent="."]
+position = Vector2(2.95, -8)
+scale = Vector2(2.7, 2.7)
+shape = SubResource("RectangleShape2D_gpbdy")
+debug_color = Color(0.85098, 0.133333, 0.839216, 0.419608)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(16, -44)
+scale = Vector2(2.7, 2.7)
+texture = ExtResource("1_0p1yd")
+hframes = 11
+metadata/_edit_lock_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_an1f0")
+}
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_sg4yr")
+initial_state = NodePath("SkeletonIdle")
+
+[node name="SkeletonIdle" type="Node" parent="StateMachine"]
+script = ExtResource("4_a5tl7")
+
+[node name="SkeletonReact" type="Node" parent="StateMachine"]
+script = ExtResource("5_u3g33")
+
+[node name="SkeletonWalk" type="Node" parent="StateMachine"]
+script = ExtResource("8_n73eg")
+
+[connection signal="body_entered" from="DetectionArea" to="StateMachine/SkeletonIdle" method="_on_detection_area_body_entered"]

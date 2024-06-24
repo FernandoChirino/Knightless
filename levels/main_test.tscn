@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bdfayn5r25x34"]
+[gd_scene load_steps=6 format=3 uid="uid://bdfayn5r25x34"]
 
 [ext_resource type="PackedScene" uid="uid://x0get1axw24b" path="res://scenes/player/p_knight_state_machine.tscn" id="1_pgw12"]
 [ext_resource type="Texture2D" uid="uid://cuui0cr7j0u3g" path="res://resources/oak_woods_v1.0/oak_woods_tileset.png" id="2_f0slh"]
+[ext_resource type="PackedScene" uid="uid://dr2acwebrxxdo" path="res://scenes/enemies/skeleton/skeleton.tscn" id="3_w520h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f3ihp"]
 texture = ExtResource("2_f0slh")
@@ -186,9 +187,6 @@ texture_region_size = Vector2i(16, 18)
 5:5/0 = 0
 5:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 5:5/0/physics_layer_0/angular_velocity = 0.0
-6:5/0 = 0
-6:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-6:5/0/physics_layer_0/angular_velocity = 0.0
 8:4/0 = 0
 8:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 8:4/0/physics_layer_0/angular_velocity = 0.0
@@ -556,9 +554,13 @@ sources/0 = SubResource("TileSetAtlasSource_f3ihp")
 [node name="MainTest" type="Node2D"]
 
 [node name="PKnight_state" parent="." instance=ExtResource("1_pgw12")]
-position = Vector2(381, 346)
+position = Vector2(126, 350)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_v6spa")
 format = 2
 layer_0/tile_data = PackedInt32Array(1441806, 524288, 12, 1441807, 589824, 12, 1441808, 655360, 12, 1441809, 720896, 12, 1441810, 524288, 12, 1441811, 589824, 12, 1441812, 655360, 12, 1441813, 589824, 12, 1441814, 524288, 12, 1441815, 589824, 12, 1441816, 655360, 12, 1441817, 720896, 12, 1441818, 524288, 12, 1441819, 589824, 12, 1441820, 655360, 12, 1441821, 524288, 12, 1441822, 589824, 12, 1441823, 655360, 12, 1441824, 720896, 12, 1441825, 524288, 12, 1441826, 589824, 12, 1441827, 655360, 12, 1441828, 720896, 12, 1441802, 524288, 12, 1441803, 589824, 12, 1441804, 655360, 12, 1441805, 720896, 12, 1441798, 524288, 12, 1441799, 589824, 12, 1441800, 655360, 12, 1441801, 720896, 12, 1441794, 524288, 12, 1441795, 589824, 12, 1441796, 655360, 12, 1441797, 720896, 12, 1441829, 524288, 12, 1441830, 589824, 12, 1441831, 655360, 12, 1441832, 720896, 12, 1441833, 524288, 12, 1441834, 589824, 12, 1441835, 655360, 12, 1441836, 720896, 12, 1441837, 524288, 12, 1441838, 589824, 12, 1441839, 655360, 12, 1441840, 720896, 12, 1441841, 524288, 12, 1441842, 589824, 12, 1441843, 655360, 12, 1441844, 720896, 12, 1441845, 524288, 12, 1441846, 589824, 12, 1441847, 655360, 12, 1441848, 720896, 12, 1441849, 524288, 12, 1441850, 589824, 12, 1441851, 655360, 12, 1441852, 720896, 12, 1441853, 524288, 12, 1441854, 589824, 12, 1441855, 655360, 12, 1441856, 720896, 12, 1441857, 524288, 12, 1441858, 589824, 12, 1441859, 655360, 12, 1441860, 720896, 12, 1441861, 524288, 12, 1441862, 589824, 12, 1441863, 655360, 12, 1441864, 524288, 12, 1441865, 589824, 12, 1441866, 655360, 12, 1441867, 720896, 12, 1441868, 524288, 12, 1441869, 589824, 12, 1441870, 655360, 12, 1441871, 720896, 12, 1441872, 524288, 12, 1441873, 589824, 12, 1441874, 655360, 12, 1441875, 720896, 12)
+
+[node name="Skeleton" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_w520h")]
+position = Vector2(745, 350)
+player = NodePath("../PKnight_state")
