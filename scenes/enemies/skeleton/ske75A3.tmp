@@ -268,7 +268,7 @@ debug_color = Color(0.85098, 0.133333, 0.839216, 0.419608)
 debug_enabled = true
 
 [node name="NavigationTimer" type="Timer" parent="NavigationAgent2D"]
-wait_time = 0.3
+wait_time = 0.1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(16, -44)
