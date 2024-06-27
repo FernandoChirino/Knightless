@@ -566,10 +566,10 @@ sources/0 = SubResource("TileSetAtlasSource_f3ihp")
 [node name="MainTest" type="Node2D"]
 
 [node name="PKnight_state" parent="." instance=ExtResource("1_pgw12")]
-position = Vector2(169, 350)
+position = Vector2(368, 325)
 
 [node name="Skeleton" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_w520h")]
-position = Vector2(863, 355)
+position = Vector2(667, 324)
 player = NodePath("../PKnight_state")
 
 [node name="TileMap" type="TileMap" parent="."]

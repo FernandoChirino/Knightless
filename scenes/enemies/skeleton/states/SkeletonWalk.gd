@@ -11,16 +11,13 @@ func Update(_delta):
 	pass
 	
 func Physics_Update(_delta):
-	var direction = parent.to_local(nav_agent.get_next_path_position()).normalized()
-	
 	$"../../AnimationPlayer".play("walk")
-	parent.velocity = direction * parent.speed
+	parent.velocity = parent.direction * parent.speed
 	
-	if direction.x < 0:
-		$"../../Sprite2D".flip_h = true
-	else: 
-		$"../../Sprite2D".flip_h = false 
-		
+	if parent.distance_to_player <= 70 and parent.distance_to_player > 0 \
+	or parent.distance_to_player >= -70 and parent.distance_to_player < 0 :
+		Transitioned.emit(self, 'skeletonattack')
+	
 func make_path():
 	nav_agent.target_position = parent.player.global_position
 

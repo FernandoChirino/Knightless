@@ -1,7 +1,6 @@
 extends State 
 class_name SkeletonReact
 
-
 func enter():
 	$"../../AnimationPlayer".play('react')
 	
