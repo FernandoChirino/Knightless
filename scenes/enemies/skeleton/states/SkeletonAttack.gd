@@ -8,7 +8,8 @@ func enter():
 	$"../../AnimationPlayer".play('attack_1')
 	
 func Update(_delta):
-	pass
+	if parent.hurt:
+		Transitioned.emit(self, 'skeletonhurt')
 	
 func Physics_Update(_delta):
 	if not $"../../AnimationPlayer".is_playing():

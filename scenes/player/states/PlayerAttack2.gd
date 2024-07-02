@@ -4,7 +4,6 @@ class_name PlayerAttack2
 @onready var parent = $"../.."
 @onready var machine = $".."
 
-
 func enter():
 	parent.velocity.x = 0 
 

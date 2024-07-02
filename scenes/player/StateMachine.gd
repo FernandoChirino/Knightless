@@ -25,7 +25,8 @@ func _process(delta):
 func _physics_process(delta):
 	if current_state:
 		current_state.Physics_Update(delta)
-
+	$"../Label2".text = str(current_state.name)
+	
 func on_child_transition(state, new_state_name):
 	if state != current_state:
 		return 

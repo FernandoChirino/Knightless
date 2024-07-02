@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0ort0e55p5jx"]
+
+[ext_resource type="TileSet" uid="uid://c7i8bxok2naif" path="res://levels/oakwoods.tres" id="5_qx4lw"]
+
+[node name="InitialArea" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("5_qx4lw")
+format = 2

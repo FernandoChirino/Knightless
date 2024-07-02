@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dr2acwebrxxdo"]
+[gd_scene load_steps=27 format=3 uid="uid://dr2acwebrxxdo"]
 
 [ext_resource type="Texture2D" uid="uid://ddl0isdvld437" path="res://resources/Skeleton/Skeleton Idle.png" id="1_0p1yd"]
 [ext_resource type="Script" path="res://scenes/enemies/skeleton/skeleton.gd" id="1_fdjug"]
@@ -8,8 +8,12 @@
 [ext_resource type="Texture2D" uid="uid://dyr4uxgiy3fpq" path="res://resources/Skeleton/Skeleton Walk.png" id="4_hrgof"]
 [ext_resource type="Texture2D" uid="uid://dn4yy4rb7e8es" path="res://resources/Skeleton/Skeleton Attack.png" id="5_a585e"]
 [ext_resource type="Script" path="res://scenes/enemies/skeleton/states/SkeletonReact.gd" id="5_u3g33"]
+[ext_resource type="Texture2D" uid="uid://37jpgk8gkg6x" path="res://resources/Skeleton/Skeleton Hit.png" id="6_fm5ll"]
+[ext_resource type="Texture2D" uid="uid://dd4icn1cyjot4" path="res://resources/Skeleton/Skeleton Dead.png" id="7_vkakp"]
 [ext_resource type="Script" path="res://scenes/enemies/skeleton/states/SkeletonWalk.gd" id="8_n73eg"]
 [ext_resource type="Script" path="res://scenes/enemies/skeleton/states/SkeletonAttack.gd" id="10_86hap"]
+[ext_resource type="Script" path="res://scenes/enemies/skeleton/states/SkeletonHurt.gd" id="12_1b7jf"]
+[ext_resource type="Script" path="res://scenes/enemies/skeleton/states/SkeletonDeath.gd" id="14_2fvik"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gpbdy"]
 size = Vector2(14.037, 6)
@@ -88,7 +92,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("AttackArea/Attack:disabled")
+tracks/5/path = NodePath("SKAttackArea/Attack:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -96,6 +100,134 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_e22pm"]
+resource_name = "attack_1"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_a585e")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [18]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [2, 3, 4, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SKAttackArea/Attack:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_i47a5"]
+resource_name = "hurt"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_fm5ll")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SKAttackArea/Attack:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_84srx"]
@@ -165,7 +297,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("AttackArea/Attack:disabled")
+tracks/5/path = NodePath("SKAttackArea/Attack:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -241,7 +373,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("AttackArea/Attack:disabled")
+tracks/5/path = NodePath("SKAttackArea/Attack:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -316,7 +448,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("AttackArea/Attack:disabled")
+tracks/5/path = NodePath("SKAttackArea/Attack:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -326,9 +458,8 @@ tracks/5/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_e22pm"]
-resource_name = "attack_1"
-length = 1.2
+[sub_resource type="Animation" id="Animation_u2se4"]
+resource_name = "death"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -339,7 +470,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("5_a585e")]
+"values": [ExtResource("7_vkakp")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -351,7 +482,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [18]
+"values": [15]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -372,28 +503,30 @@ tracks/3/path = NodePath("Sprite2D:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [2, 3, 4, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16]
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 14]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("AttackArea/Attack:disabled")
+tracks/4/path = NodePath("SKAttackArea/Attack:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true, false, true]
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_an1f0"]
 _data = {
 "RESET": SubResource("Animation_vhqub"),
 "attack_1": SubResource("Animation_e22pm"),
+"death": SubResource("Animation_u2se4"),
+"hurt": SubResource("Animation_i47a5"),
 "idle": SubResource("Animation_84srx"),
 "react": SubResource("Animation_pcut3"),
 "walk": SubResource("Animation_nt7s5")
@@ -405,36 +538,39 @@ script = ExtResource("1_fdjug")
 speed = 100
 
 [node name="FloorHitBox" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(2.95, -8)
 scale = Vector2(2.7, 2.7)
 shape = SubResource("RectangleShape2D_gpbdy")
 debug_color = Color(0.85098, 0.133333, 0.839216, 0.419608)
 metadata/_edit_lock_ = true
 
-[node name="HitBoxArea" type="Area2D" parent="."]
+[node name="SKHitBoxArea" type="Area2D" parent="."]
 scale = Vector2(2.7, 2.7)
 collision_layer = 4
 collision_mask = 2
 
-[node name="HitBox" type="CollisionShape2D" parent="HitBoxArea"]
+[node name="HitBox" type="CollisionShape2D" parent="SKHitBoxArea"]
 position = Vector2(2.22222, -12.963)
 shape = SubResource("RectangleShape2D_kbdrl")
 metadata/_edit_lock_ = true
 
-[node name="DetectionArea" type="Area2D" parent="."]
+[node name="SKDetectionArea" type="Area2D" parent="."]
 scale = Vector2(2.7, 2.7)
 collision_layer = 4
 collision_mask = 2
 metadata/_edit_lock_ = true
 
-[node name="Detection" type="CollisionShape2D" parent="DetectionArea"]
+[node name="Detection" type="CollisionShape2D" parent="SKDetectionArea"]
 position = Vector2(-1.48148, -11.8519)
 shape = SubResource("RectangleShape2D_tiguo")
 metadata/_edit_lock_ = true
 
-[node name="AttackArea" type="Area2D" parent="."]
+[node name="SKAttackArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
 
-[node name="Attack" type="CollisionShape2D" parent="AttackArea"]
+[node name="Attack" type="CollisionShape2D" parent="SKAttackArea"]
 position = Vector2(46.5, -45.5)
 shape = SubResource("RectangleShape2D_j54y3")
 debug_color = Color(0.458824, 0.00392157, 0.968627, 0.419608)
@@ -472,5 +608,18 @@ script = ExtResource("8_n73eg")
 [node name="SkeletonAttack" type="Node" parent="StateMachine"]
 script = ExtResource("10_86hap")
 
-[connection signal="body_entered" from="DetectionArea" to="StateMachine/SkeletonIdle" method="_on_detection_area_body_entered"]
+[node name="SkeletonHurt" type="Node" parent="StateMachine"]
+script = ExtResource("12_1b7jf")
+
+[node name="SkeletonDeath" type="Node" parent="StateMachine"]
+script = ExtResource("14_2fvik")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -23.0
+offset_top = -87.0
+offset_right = 17.0
+offset_bottom = -64.0
+
+[connection signal="area_entered" from="SKHitBoxArea" to="." method="_on_hit_box_area_area_entered"]
+[connection signal="body_entered" from="SKDetectionArea" to="StateMachine/SkeletonIdle" method="_on_detection_area_body_entered"]
 [connection signal="timeout" from="NavigationAgent2D/NavigationTimer" to="StateMachine/SkeletonWalk" method="_on_navigation_timer_timeout"]
