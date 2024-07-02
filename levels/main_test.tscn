@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://x0get1axw24b" path="res://scenes/player/p_knight_state_machine.tscn" id="1_pgw12"]
 [ext_resource type="PackedScene" uid="uid://dr2acwebrxxdo" path="res://scenes/enemies/skeleton/skeleton.tscn" id="3_w520h"]
-[ext_resource type="TileSet" uid="uid://c7i8bxok2naif" path="res://levels/oakwoods.tres" id="3_ywxqh"]
+[ext_resource type="TileSet" uid="uid://c7i8bxok2naif" path="res://levels/tileset/oakwoods.tres" id="3_ywxqh"]
 
 [node name="MainTest" type="Node2D"]
 

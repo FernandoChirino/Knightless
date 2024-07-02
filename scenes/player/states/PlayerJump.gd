@@ -4,7 +4,7 @@ class_name PlayerJump
 @onready var parent = $"../.."
 
 func enter():
-	parent.velocity.y -= 18 * parent.gravity
+	parent.velocity.y -= 15 * parent.gravity
 	$"../PlayerRun".accel = 10.0
 	
 func Update(_delta):
