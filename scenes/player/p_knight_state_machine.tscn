@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://x0get1axw24b"]
+[gd_scene load_steps=32 format=3 uid="uid://x0get1axw24b"]
 
 [ext_resource type="Script" path="res://scenes/player/p_knight_state_machine.gd" id="1_wvsi7"]
 [ext_resource type="Texture2D" uid="uid://bm1sy6oquq8de" path="res://resources/Player/Idle.png" id="2_8jt17"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" path="res://scenes/player/states/PlayerHurt.gd" id="13_n1dgi"]
 [ext_resource type="Script" path="res://scenes/player/states/PlayerJump.gd" id="15_la4hm"]
 [ext_resource type="Script" path="res://scenes/player/states/PlayerDeath.gd" id="17_0n78n"]
+[ext_resource type="PackedScene" uid="uid://v06wm3003q06" path="res://scenes/basic_light.tscn" id="18_yd1ef"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1shgi"]
 radius = 8.5
@@ -1088,16 +1089,15 @@ _data = {
 }
 
 [node name="PKnight_state" type="CharacterBody2D"]
-scale = Vector2(2, 2)
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_wvsi7")
-SPEED = 600.0
-health = 2
+SPEED = 550.0
 gravity = 90
 
 [node name="PKCamera" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
+zoom = Vector2(2.5, 2.5)
+limit_left = 0
 
 [node name="FloorHitbox" type="CollisionShape2D" parent="."]
 visible = false
@@ -1165,6 +1165,7 @@ script = ExtResource("15_la4hm")
 script = ExtResource("17_0n78n")
 
 [node name="Label2" type="Label" parent="."]
+visible = false
 texture_filter = 2
 offset_left = -8.0
 offset_top = -72.0
@@ -1177,6 +1178,9 @@ offset_left = -52.0
 offset_top = -40.0
 offset_right = -12.0
 offset_bottom = -17.0
+
+[node name="BasicLight" parent="." instance=ExtResource("18_yd1ef")]
+scale = Vector2(0.5, 0.5)
 
 [connection signal="area_entered" from="PKHitboxArea" to="." method="_on_hitbox_area_area_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="StateMachine" method="_on_animation_player_animation_finished"]

@@ -7,11 +7,17 @@ class_name Player
 
 var hurt = false 
 var Skeleton_dir
+var can_jump = false
 
 func _physics_process(_delta):
 	velocity.y += gravity
 	$Label.text = str(health) 
 	move_and_slide()
+	
+	if is_on_floor():
+		can_jump = true 
+	else:
+		can_jump = false 
 
 func _on_hitbox_area_area_entered(area):
 	if area.name == 'SKAttackArea':

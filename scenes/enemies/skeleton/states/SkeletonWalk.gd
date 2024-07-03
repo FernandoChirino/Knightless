@@ -14,8 +14,8 @@ func Physics_Update(_delta):
 	$"../../AnimationPlayer".play("walk")
 	parent.velocity = parent.direction * parent.speed
 	
-	if parent.distance_to_player <= 70 and parent.distance_to_player > 0 \
-	or parent.distance_to_player >= -70 and parent.distance_to_player < 0 :
+	if parent.distance_to_player <= 40 and parent.distance_to_player > 0 \
+	or parent.distance_to_player >= -40 and parent.distance_to_player < 0 :
 		Transitioned.emit(self, 'skeletonattack')
 	
 func make_path():

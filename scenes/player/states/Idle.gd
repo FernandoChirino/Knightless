@@ -17,7 +17,7 @@ func Update(_delta):
 	and machine.current_state.name != 'PlayerHurt':
 		Transitioned.emit(self, 'playerattack1')
 	
-	if Input.is_action_just_pressed("jump"):
+	if Input.is_action_just_pressed("jump") and parent.can_jump:
 		Transitioned.emit(self, 'playerjump')
 	
 func Physics_Update(_delta):

@@ -533,6 +533,7 @@ _data = {
 }
 
 [node name="Skeleton" type="CharacterBody2D"]
+scale = Vector2(0.5, 0.5)
 collision_layer = 4
 script = ExtResource("1_fdjug")
 speed = 100

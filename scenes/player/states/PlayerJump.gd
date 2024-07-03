@@ -10,6 +10,7 @@ func enter():
 func Update(_delta):
 	if parent.is_on_floor():
 		Transitioned.emit(self, "playeridle")
-	
+		
+
 func Physics_Update(_delta):
 	pass

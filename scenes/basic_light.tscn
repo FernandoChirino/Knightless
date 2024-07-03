@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://v06wm3003q06"]
+
+[ext_resource type="Texture2D" uid="uid://5ksy64upn1y2" path="res://resources/oak_woods_v1.0/decorations/light.png" id="1_x2vdg"]
+
+[node name="BasicLight" type="PointLight2D"]
+blend_mode = 2
+texture = ExtResource("1_x2vdg")
