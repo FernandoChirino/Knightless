@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjv7h0bomww08"]
+
+[ext_resource type="Texture2D" uid="uid://d36jbsjfc4olm" path="res://resources/oak_woods_v1.0/decorations/rock_3.png" id="1_5inhx"]
+[ext_resource type="PackedScene" uid="uid://v06wm3003q06" path="res://scenes/basic_light.tscn" id="2_amxp7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r7uih"]
+size = Vector2(44, 20)
+
+[node name="MagicStone1" type="Area2D"]
+collision_layer = 8
+collision_mask = 2
+
+[node name="Rock1Detection" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_r7uih")
+
+[node name="Rock" type="Sprite2D" parent="."]
+texture = ExtResource("1_5inhx")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+modulate = Color(2, 2, 2, 1)
+position = Vector2(0, -40)
+amount = 5
+emission_shape = 1
+emission_sphere_radius = 42.51
+gravity = Vector2(0, -100)
+scale_amount_min = 2.0
+scale_amount_max = 3.0
+hue_variation_min = -0.22
+hue_variation_max = 1.0
+
+[node name="BasicLight" parent="." instance=ExtResource("2_amxp7")]
+position = Vector2(0, -28)
+scale = Vector2(0.2, 0.2)
+shadow_enabled = true

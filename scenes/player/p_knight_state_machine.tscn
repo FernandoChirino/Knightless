@@ -1100,7 +1100,6 @@ zoom = Vector2(2.5, 2.5)
 limit_left = 0
 
 [node name="FloorHitbox" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0.5, -21.5)
 shape = SubResource("CapsuleShape2D_1shgi")
 debug_color = Color(0.87451, 0.168627, 0.737255, 0.419608)
@@ -1124,7 +1123,7 @@ disabled = true
 [node name="PKAttackHitBoxArea" type="Area2D" parent="."]
 position = Vector2(24.5, -21.5)
 collision_layer = 2
-collision_mask = 4
+collision_mask = 12
 
 [node name="AttackHitBox" type="CollisionShape2D" parent="PKAttackHitBoxArea"]
 position = Vector2(4.5, 0)
@@ -1180,7 +1179,7 @@ offset_right = -12.0
 offset_bottom = -17.0
 
 [node name="BasicLight" parent="." instance=ExtResource("18_yd1ef")]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.4, 0.4)
 
 [connection signal="area_entered" from="PKHitboxArea" to="." method="_on_hitbox_area_area_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="StateMachine" method="_on_animation_player_animation_finished"]

@@ -577,6 +577,7 @@ shape = SubResource("RectangleShape2D_j54y3")
 debug_color = Color(0.458824, 0.00392157, 0.968627, 0.419608)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+navigation_layers = 255
 debug_enabled = true
 
 [node name="NavigationTimer" type="Timer" parent="NavigationAgent2D"]

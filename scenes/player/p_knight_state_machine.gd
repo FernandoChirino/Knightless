@@ -8,6 +8,7 @@ class_name Player
 var hurt = false 
 var Skeleton_dir
 var can_jump = false
+var barrrier_1_on = true
 
 func _physics_process(_delta):
 	velocity.y += gravity
@@ -18,6 +19,11 @@ func _physics_process(_delta):
 		can_jump = true 
 	else:
 		can_jump = false 
+		
+	if barrrier_1_on: 
+		$PKCamera.limit_right = 1342
+	else:   
+		$PKCamera.limit_right = 10000000
 
 func _on_hitbox_area_area_entered(area):
 	if area.name == 'SKAttackArea':
@@ -27,3 +33,9 @@ func _on_hitbox_area_area_entered(area):
 
 func _on_skeleton_skeleton_dir(sk_dir):
 	Skeleton_dir = sk_dir
+
+
+func _on_boss_area_area_entered(area):
+	print(area.name)
+	if area.name == 'PKHitboxArea':
+		$BasicLight.enabled = false

@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=3 uid="uid://b7qnp3iqg3i6u"]
+
+[ext_resource type="Texture2D" uid="uid://02vg6110r4jg" path="res://resources/oak_woods_v1.0/decorations/sign.png" id="1_0k7to"]
+[ext_resource type="FontFile" uid="uid://ols7ut5xob4i" path="res://resources/TeenyTinyPixls-o2zo.ttf" id="2_r5qim"]
+[ext_resource type="PackedScene" uid="uid://v06wm3003q06" path="res://scenes/basic_light.tscn" id="3_hdq03"]
+
+[sub_resource type="GDScript" id="GDScript_m74cd"]
+script/source = "extends Area2D
+
+@export var message : String
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta):
+	pass
+
+
+func _on_area_entered(area):
+	if area.name == 'PKHitboxArea':
+		$Label.text = message
+
+
+func _on_area_exited(area):
+	if area.name == 'PKHitboxArea':
+		$Label.text = ''
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m3yg2"]
+size = Vector2(26, 31)
+
+[node name="Signboard" type="Area2D"]
+collision_layer = 8
+collision_mask = 2
+script = SubResource("GDScript_m74cd")
+
+[node name="SignboardCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_m3yg2")
+
+[node name="SignboardSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_0k7to")
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 1
+offset_left = -74.0
+offset_top = -39.0
+offset_right = 76.0
+offset_bottom = -16.0
+theme_override_fonts/font = ExtResource("2_r5qim")
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BasicLight" parent="." instance=ExtResource("3_hdq03")]
+scale = Vector2(0.2, 0.2)
+color = Color(0.905882, 0.756863, 0.639216, 1)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
