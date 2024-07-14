@@ -10,9 +10,9 @@ func enter():
 func Update(_delta):
 	pass
 	
-func Physics_Update(_delta):
+func Physics_Update(delta):
 	$"../../AnimationPlayer".play("walk")
-	parent.velocity = parent.direction * parent.speed
+	parent.velocity = parent.direction * parent.speed * delta 
 	
 	if parent.distance_to_player <= 40 and parent.distance_to_player > 0 \
 	or parent.distance_to_player >= -40 and parent.distance_to_player < 0 :

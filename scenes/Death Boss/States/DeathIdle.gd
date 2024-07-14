@@ -4,10 +4,10 @@ class_name DeathIdle
 func enter():
 	pass 
 	
-func Update(delta):
+func Update(_delta):
 	pass 
 	
-func Physics_Update(delta):
+func Physics_Update(_delta):
 	$"../../AnimationPlayer".play('idle')
 
 

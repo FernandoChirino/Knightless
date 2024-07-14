@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dkiaquifk7xy1"]
+[gd_scene load_steps=16 format=3 uid="uid://dkiaquifk7xy1"]
 
 [ext_resource type="Texture2D" uid="uid://nshwioownrod" path="res://resources/Death boss/idle2.png" id="1_7h18p"]
 [ext_resource type="Script" path="res://scenes/Death Boss/death.gd" id="1_fb0ll"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scenes/Death Boss/StateMachine.gd" id="3_gg0pi"]
 [ext_resource type="Script" path="res://scenes/Death Boss/States/DeathIdle.gd" id="5_5j5es"]
 [ext_resource type="Script" path="res://scenes/Death Boss/States/DeathWalk.gd" id="6_5cthr"]
+[ext_resource type="Script" path="res://scenes/Death Boss/States/DeathAttack.gd" id="7_hqkr7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k13cm"]
 size = Vector2(20, 21)
@@ -209,6 +210,7 @@ size = Vector2(35, 60)
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_fb0ll")
+SPEED = 9000.0
 gravity = 100
 
 [node name="FloorHitbox" type="CollisionShape2D" parent="."]
@@ -216,17 +218,13 @@ position = Vector2(-6, 34)
 shape = SubResource("RectangleShape2D_k13cm")
 debug_color = Color(1, 0.219608, 0.462745, 0.419608)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_7h18p")
-hframes = 3
-vframes = 2
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_mpwfq")
 }
 
 [node name="DetectionArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 4
 collision_mask = 3
 
@@ -251,6 +249,11 @@ shape = SubResource("RectangleShape2D_5ykex")
 disabled = true
 debug_color = Color(0.152941, 0.772549, 0.45098, 0.419608)
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_7h18p")
+hframes = 3
+vframes = 2
+
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_gg0pi")
 initial_state = NodePath("DeathIdle")
@@ -261,4 +264,14 @@ script = ExtResource("5_5j5es")
 [node name="DeathWalk" type="Node" parent="StateMachine"]
 script = ExtResource("6_5cthr")
 
+[node name="DeathAttack" type="Node" parent="StateMachine"]
+script = ExtResource("7_hqkr7")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
+
+[node name="NavTimer" type="Timer" parent="NavigationAgent2D"]
+wait_time = 0.3
+
 [connection signal="area_entered" from="DetectionArea" to="StateMachine/DeathIdle" method="_on_detection_area_area_entered"]
+[connection signal="timeout" from="NavigationAgent2D/NavTimer" to="StateMachine/DeathWalk" method="_on_nav_timer_timeout"]
