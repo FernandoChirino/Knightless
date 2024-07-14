@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b0ort0e55p5jx"]
+[gd_scene load_steps=22 format=3 uid="uid://b0ort0e55p5jx"]
 
 [ext_resource type="Script" path="res://levels/initial_area.gd" id="1_3qxwk"]
 [ext_resource type="PackedScene" uid="uid://dr2acwebrxxdo" path="res://scenes/enemies/skeleton/skeleton.tscn" id="1_gop8s"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://cjv7h0bomww08" path="res://scenes/magic_stone_1.tscn" id="13_5ioyf"]
 [ext_resource type="PackedScene" uid="uid://b7qnp3iqg3i6u" path="res://scenes/signboard.tscn" id="15_l33eg"]
 [ext_resource type="PackedScene" uid="uid://ckgefqdm0el6w" path="res://scenes/fire_particles.tscn" id="16_fmio1"]
+[ext_resource type="PackedScene" uid="uid://dkiaquifk7xy1" path="res://scenes/Death Boss/death.tscn" id="17_v7nsw"]
 
 [sub_resource type="Environment" id="Environment_d62d1"]
 background_mode = 3
@@ -39,6 +40,7 @@ size = Vector2(20, 183.494)
 script = ExtResource("1_3qxwk")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 offset_right = 3410.0
 offset_bottom = 2169.0
 color = Color(0.101961, 0.101961, 0.101961, 1)
@@ -47,10 +49,11 @@ color = Color(0.101961, 0.101961, 0.101961, 1)
 environment = SubResource("Environment_d62d1")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0.0235294, 0.0235294, 0.0235294, 1)
 
 [node name="PKnight_state" parent="." instance=ExtResource("8_ypajq")]
-position = Vector2(2779.84, 380.363)
+position = Vector2(2117, 515)
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(-1, 0)
@@ -253,6 +256,9 @@ metadata/_edit_lock_ = true
 [node name="FireParticles5" parent="Fire" instance=ExtResource("16_fmio1")]
 position = Vector2(2917, 463)
 metadata/_edit_lock_ = true
+
+[node name="Death" parent="." instance=ExtResource("17_v7nsw")]
+position = Vector2(2698, 492)
 
 [connection signal="Skeleton_dir" from="Enemies/Skeleton" to="PKnight_state" method="_on_skeleton_skeleton_dir"]
 [connection signal="Skeleton_dir" from="Enemies/Skeleton2" to="PKnight_state" method="_on_skeleton_skeleton_dir"]

@@ -30,12 +30,9 @@ func _on_hitbox_area_area_entered(area):
 		hurt = true 
 		$StateMachine.on_child_transition($StateMachine/PlayerIdle, 'playerhurt')
 
-
 func _on_skeleton_skeleton_dir(sk_dir):
 	Skeleton_dir = sk_dir
 
-
 func _on_boss_area_area_entered(area):
-	print(area.name)
 	if area.name == 'PKHitboxArea':
 		$BasicLight.enabled = false

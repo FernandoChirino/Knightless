@@ -19,6 +19,7 @@ func _physics_process(_delta):
 	direction = to_local(nav_agent.get_next_path_position()).normalized()
 	distance_to_player = global_position.x - player.global_position.x
 	
+	
 	if direction.x < 0:
 		$Sprite2D.flip_h = true
 		$SKAttackArea/Attack.position.x = -46.5
