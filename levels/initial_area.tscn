@@ -257,7 +257,6 @@ metadata/_edit_lock_ = true
 
 [node name="Death" parent="." node_paths=PackedStringArray("player") instance=ExtResource("17_v7nsw")]
 position = Vector2(2698, 492)
-health = 0
 player = NodePath("../PKnight_state")
 
 [connection signal="Skeleton_dir" from="Enemies/Skeleton" to="PKnight_state" method="_on_skeleton_skeleton_dir"]
@@ -265,3 +264,4 @@ player = NodePath("../PKnight_state")
 [connection signal="Skeleton_dir" from="Enemies/Skeleton3" to="PKnight_state" method="_on_skeleton_skeleton_dir"]
 [connection signal="area_entered" from="Interactables/MagicStone1" to="." method="_on_magic_stone_1_area_entered"]
 [connection signal="area_entered" from="Interactables/BossArea" to="PKnight_state" method="_on_boss_area_area_entered"]
+[connection signal="DeathDirection" from="Death" to="PKnight_state" method="_on_death_death_direction"]

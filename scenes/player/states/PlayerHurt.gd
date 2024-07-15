@@ -7,7 +7,7 @@ func enter():
 	$"../../AnimationPlayer".play('hurt')
 	parent.health -= 1 
 	parent.hurt = false 
-	if parent.Skeleton_dir.x < 0:
+	if parent.Skeleton_dir.x < 0 or parent.Death_dir.x < 0:
 		parent.position -= Vector2(20, 10)
 	else:
 		parent.position += Vector2(20, 10)

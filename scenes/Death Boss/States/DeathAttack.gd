@@ -6,10 +6,11 @@ class_name DeathAttack
 func enter():
 	parent.velocity.x = 0 
 	$"../../AnimationPlayer".play('attack')
-	
-func Update(_delta):
-	if not $"../../AnimationPlayer".is_playing():
+
+func exit():
+	$"../../AttackTimer".start()
+
+func _on_animation_player_animation_finished(anim_name):
+	if anim_name == 'attack':
+		parent.can_attack = false 
 		Transitioned.emit(self, 'deathwalk')
-	
-func Physics_Update(_delta):
-	pass

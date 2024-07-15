@@ -7,15 +7,18 @@ func enter():
 	$"../../NavigationAgent2D/NavTimer".start()
 	
 func Update(_delta):
-	pass 
+	if parent.hurt:
+		Transitioned.emit(self, 'deathhurt')
 	
 func Physics_Update(delta):
 	$"../../AnimationPlayer".play('idle')
 	
-	parent.velocity = parent.direction * parent.SPEED * delta 
+	if parent.can_attack == true:
+		parent.velocity = parent.direction * parent.SPEED * delta 
 	
-	if parent.distance_to_player <= 40 and parent.distance_to_player > 0 \
-	or parent.distance_to_player >= -40 and parent.distance_to_player < 0 :
+	if parent.distance_to_player <= 60 and parent.distance_to_player > 0 \
+	and parent.can_attack == true or parent.distance_to_player >= -60 \
+	and parent.distance_to_player < 0 and parent.can_attack == true:
 		Transitioned.emit(self, 'deathattack')
 	
 func make_path():

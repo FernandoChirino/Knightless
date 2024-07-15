@@ -9,6 +9,7 @@ var hurt = false
 var Skeleton_dir
 var can_jump = false
 var barrrier_1_on = true
+var Death_dir 
 
 func _physics_process(_delta):
 	velocity.y += gravity
@@ -26,7 +27,7 @@ func _physics_process(_delta):
 		$PKCamera.limit_right = 10000000
 
 func _on_hitbox_area_area_entered(area):
-	if area.name == 'SKAttackArea':
+	if area.name == 'SKAttackArea' or area.name == 'DeathAttack_1Area2D':
 		hurt = true 
 		$StateMachine.on_child_transition($StateMachine/PlayerIdle, 'playerhurt')
 
@@ -36,3 +37,6 @@ func _on_skeleton_skeleton_dir(sk_dir):
 func _on_boss_area_area_entered(area):
 	if area.name == 'PKHitboxArea':
 		$BasicLight.enabled = false
+
+func _on_death_death_direction(death_direction):
+	Death_dir = death_direction

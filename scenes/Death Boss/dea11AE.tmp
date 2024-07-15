@@ -236,7 +236,6 @@ shape = SubResource("RectangleShape2D_8w04j")
 
 [node name="DeathHitboxArea" type="Area2D" parent="."]
 collision_layer = 4
-collision_mask = 3
 
 [node name="DeathHitbox" type="CollisionShape2D" parent="DeathHitboxArea"]
 position = Vector2(-5, 0)
@@ -257,9 +256,6 @@ texture = ExtResource("1_7h18p")
 hframes = 3
 vframes = 2
 
-[node name="AttackTimer" type="Timer" parent="."]
-wait_time = 0.8
-
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_gg0pi")
 initial_state = NodePath("DeathIdle")
@@ -270,13 +266,11 @@ script = ExtResource("5_5j5es")
 [node name="DeathWalk" type="Node" parent="StateMachine"]
 script = ExtResource("6_5cthr")
 
-[node name="DeathHurt" type="Node" parent="StateMachine"]
-script = ExtResource("8_w4v1r")
-
-[node name="Timer" type="Timer" parent="StateMachine/DeathHurt"]
-
 [node name="DeathAttack" type="Node" parent="StateMachine"]
 script = ExtResource("7_hqkr7")
+
+[node name="DeathHurt" type="Node" parent="StateMachine"]
+script = ExtResource("8_w4v1r")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 debug_enabled = true
@@ -284,9 +278,6 @@ debug_enabled = true
 [node name="NavTimer" type="Timer" parent="NavigationAgent2D"]
 wait_time = 0.3
 
-[connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/DeathAttack" method="_on_animation_player_animation_finished"]
 [connection signal="area_entered" from="DetectionArea" to="StateMachine/DeathIdle" method="_on_detection_area_area_entered"]
 [connection signal="area_entered" from="DeathHitboxArea" to="." method="_on_death_hitbox_area_area_entered"]
-[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
-[connection signal="timeout" from="StateMachine/DeathHurt/Timer" to="StateMachine/DeathHurt" method="_on_timer_timeout"]
 [connection signal="timeout" from="NavigationAgent2D/NavTimer" to="StateMachine/DeathWalk" method="_on_nav_timer_timeout"]
