@@ -2,9 +2,11 @@ extends CharacterBody2D
 class_name Player 
 
 @export var SPEED: float
-@export var health = 10 
+@export var health : int 
 @export var gravity = 100   
+@export var health_max : int  
 
+var health_min = 0 
 var hurt = false 
 var Skeleton_dir
 var can_jump = false
@@ -13,7 +15,6 @@ var Death_dir
 
 func _physics_process(_delta):
 	velocity.y += gravity
-	$Label.text = str(health) 
 	move_and_slide()
 	
 	if is_on_floor():

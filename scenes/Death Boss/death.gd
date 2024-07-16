@@ -2,13 +2,15 @@ extends CharacterBody2D
 
 signal DeathDirection
 
+@onready var nav_agent = $NavigationAgent2D
+
 @export var SPEED : float 
 @export var health : int 
 @export var gravity : int 
 @export var player : CharacterBody2D
+@export var health_max : int 
 
-@onready var nav_agent = $NavigationAgent2D
-
+var health_min = 0 
 var direction 
 var distance_to_player 
 var hurt = false 

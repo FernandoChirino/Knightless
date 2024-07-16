@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgpc1k6wdnawe"]
+
+[ext_resource type="Texture2D" uid="uid://df7w5anugb2md" path="res://resources/health_bar.png" id="1_cp7de"]
+[ext_resource type="Texture2D" uid="uid://cwwwcxalwrg8f" path="res://resources/health_bar_progress.png" id="2_kksia"]
+
+[sub_resource type="GDScript" id="GDScript_eewhe"]
+script/source = "extends TextureProgressBar
+
+var parent 
+var max_value_amount
+var min_value_amount 
+
+func _ready():
+	parent = get_parent()
+	
+	self.max_value = parent.health_max
+	self.min_value = parent.health_min
+
+func _process(_delta):
+	self.value = parent.health 
+	
+	if parent.health != self.max_value:
+		self.visible = true 
+		if parent.health == self.min_value:
+			self.visible = false 
+	else: 
+		self.visible = false 
+"
+
+[node name="HealthBar" type="TextureProgressBar"]
+offset_right = 40.0
+offset_bottom = 40.0
+max_value = 0.0
+texture_under = ExtResource("1_cp7de")
+texture_progress = ExtResource("2_kksia")
+texture_progress_offset = Vector2(0, -1)
+script = SubResource("GDScript_eewhe")

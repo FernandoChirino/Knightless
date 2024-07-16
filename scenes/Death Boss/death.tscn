@@ -1,10 +1,12 @@
-[gd_scene load_steps=17 format=3 uid="uid://dkiaquifk7xy1"]
+[gd_scene load_steps=19 format=3 uid="uid://dkiaquifk7xy1"]
 
 [ext_resource type="Texture2D" uid="uid://nshwioownrod" path="res://resources/Death boss/idle2.png" id="1_7h18p"]
 [ext_resource type="Script" path="res://scenes/Death Boss/death.gd" id="1_fb0ll"]
 [ext_resource type="Texture2D" uid="uid://1v0tdxx1wmte" path="res://resources/Death boss/attacking.png" id="2_a5sot"]
 [ext_resource type="Script" path="res://scenes/Death Boss/StateMachine.gd" id="3_gg0pi"]
+[ext_resource type="PackedScene" uid="uid://dgpc1k6wdnawe" path="res://scenes/health_bar.tscn" id="4_t3mxa"]
 [ext_resource type="Script" path="res://scenes/Death Boss/States/DeathIdle.gd" id="5_5j5es"]
+[ext_resource type="PackedScene" uid="uid://v06wm3003q06" path="res://scenes/basic_light.tscn" id="5_ckldc"]
 [ext_resource type="Script" path="res://scenes/Death Boss/States/DeathWalk.gd" id="6_5cthr"]
 [ext_resource type="Script" path="res://scenes/Death Boss/States/DeathAttack.gd" id="7_hqkr7"]
 [ext_resource type="Script" path="res://scenes/Death Boss/States/DeathHurt.gd" id="8_w4v1r"]
@@ -214,6 +216,7 @@ script = ExtResource("1_fb0ll")
 SPEED = 9000.0
 health = 15
 gravity = 100
+health_max = 15
 
 [node name="FloorHitbox" type="CollisionShape2D" parent="."]
 position = Vector2(-6, 34)
@@ -260,6 +263,24 @@ vframes = 2
 [node name="AttackTimer" type="Timer" parent="."]
 wait_time = 0.8
 
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
+
+[node name="NavTimer" type="Timer" parent="NavigationAgent2D"]
+wait_time = 0.3
+
+[node name="HealthBar" parent="." instance=ExtResource("4_t3mxa")]
+offset_left = -82.0
+offset_top = -40.0
+offset_right = 18.0
+offset_bottom = -3.8147e-06
+scale = Vector2(1.5, 1.5)
+
+[node name="BasicLight" parent="." instance=ExtResource("5_ckldc")]
+scale = Vector2(0.1, 0.1)
+color = Color(1, 0.305882, 0.176471, 1)
+blend_mode = 0
+
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_gg0pi")
 initial_state = NodePath("DeathIdle")
@@ -278,15 +299,9 @@ script = ExtResource("8_w4v1r")
 [node name="DeathAttack" type="Node" parent="StateMachine"]
 script = ExtResource("7_hqkr7")
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-debug_enabled = true
-
-[node name="NavTimer" type="Timer" parent="NavigationAgent2D"]
-wait_time = 0.3
-
 [connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/DeathAttack" method="_on_animation_player_animation_finished"]
 [connection signal="area_entered" from="DetectionArea" to="StateMachine/DeathIdle" method="_on_detection_area_area_entered"]
 [connection signal="area_entered" from="DeathHitboxArea" to="." method="_on_death_hitbox_area_area_entered"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
-[connection signal="timeout" from="StateMachine/DeathHurt/Timer" to="StateMachine/DeathHurt" method="_on_timer_timeout"]
 [connection signal="timeout" from="NavigationAgent2D/NavTimer" to="StateMachine/DeathWalk" method="_on_nav_timer_timeout"]
+[connection signal="timeout" from="StateMachine/DeathHurt/Timer" to="StateMachine/DeathHurt" method="_on_timer_timeout"]

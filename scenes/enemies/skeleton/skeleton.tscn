@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dr2acwebrxxdo"]
+[gd_scene load_steps=28 format=3 uid="uid://dr2acwebrxxdo"]
 
 [ext_resource type="Texture2D" uid="uid://ddl0isdvld437" path="res://resources/Skeleton/Skeleton Idle.png" id="1_0p1yd"]
 [ext_resource type="Script" path="res://scenes/enemies/skeleton/skeleton.gd" id="1_fdjug"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://37jpgk8gkg6x" path="res://resources/Skeleton/Skeleton Hit.png" id="6_fm5ll"]
 [ext_resource type="Texture2D" uid="uid://dd4icn1cyjot4" path="res://resources/Skeleton/Skeleton Dead.png" id="7_vkakp"]
 [ext_resource type="Script" path="res://scenes/enemies/skeleton/states/SkeletonWalk.gd" id="8_n73eg"]
+[ext_resource type="PackedScene" uid="uid://dgpc1k6wdnawe" path="res://scenes/health_bar.tscn" id="8_rov3e"]
 [ext_resource type="Script" path="res://scenes/enemies/skeleton/states/SkeletonAttack.gd" id="10_86hap"]
 [ext_resource type="Script" path="res://scenes/enemies/skeleton/states/SkeletonHurt.gd" id="12_1b7jf"]
 [ext_resource type="Script" path="res://scenes/enemies/skeleton/states/SkeletonDeath.gd" id="14_2fvik"]
@@ -537,6 +538,8 @@ scale = Vector2(0.5, 0.5)
 collision_layer = 4
 script = ExtResource("1_fdjug")
 speed = 7000
+health = 3
+health_max = 3
 
 [node name="FloorHitBox" type="CollisionShape2D" parent="."]
 visible = false
@@ -594,6 +597,12 @@ libraries = {
 "": SubResource("AnimationLibrary_an1f0")
 }
 
+[node name="HealthBar" parent="." instance=ExtResource("8_rov3e")]
+offset_left = -30.0
+offset_top = -92.0
+offset_right = 70.0
+offset_bottom = -52.0
+
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_sg4yr")
 initial_state = NodePath("SkeletonIdle")
@@ -615,12 +624,6 @@ script = ExtResource("12_1b7jf")
 
 [node name="SkeletonDeath" type="Node" parent="StateMachine"]
 script = ExtResource("14_2fvik")
-
-[node name="Label" type="Label" parent="."]
-offset_left = -23.0
-offset_top = -87.0
-offset_right = 17.0
-offset_bottom = -64.0
 
 [connection signal="area_entered" from="SKHitBoxArea" to="." method="_on_hit_box_area_area_entered"]
 [connection signal="body_entered" from="SKDetectionArea" to="StateMachine/SkeletonIdle" method="_on_detection_area_body_entered"]
