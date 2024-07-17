@@ -21,6 +21,9 @@ func _process(_delta):
 		player.position = Vector2(1221, 289)
 		player.health -= 1
 		
+	if player.health == 0:
+		get_tree().reload_current_scene()
+		
 func _on_magic_stone_1_area_entered(area):
 	if area.name == 'PKAttackHitBoxArea':
 		barrier_on = false 
