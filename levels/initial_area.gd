@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var player : Player = $PKnight_state
 
-var barrier_on = false
+var barrier_on = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

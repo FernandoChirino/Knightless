@@ -51,7 +51,7 @@ environment = SubResource("Environment_d62d1")
 color = Color(0.0235294, 0.0235294, 0.0235294, 1)
 
 [node name="PKnight_state" parent="." instance=ExtResource("8_ypajq")]
-position = Vector2(134, 265)
+position = Vector2(142, 276)
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(-1, 0)
@@ -65,18 +65,18 @@ layer_1/tile_data = PackedInt32Array(1572942, 1, 5, 1572940, 720897, 0, 1572938,
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Skeleton" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("1_gop8s")]
-position = Vector2(377, 468)
+position = Vector2(1930, 608)
 rotation = 0.000527093
 player = NodePath("../../PKnight_state")
 
 [node name="Skeleton2" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("1_gop8s")]
-position = Vector2(1014, 398)
-rotation = 0.00105419
+position = Vector2(1098, 400)
+rotation = 0.000527093
 player = NodePath("../../PKnight_state")
 
 [node name="Skeleton3" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("1_gop8s")]
-position = Vector2(1994, 604)
-rotation = 0.00105419
+position = Vector2(385, 468)
+rotation = 0.000527093
 player = NodePath("../../PKnight_state")
 
 [node name="Decorations" type="Node2D" parent="."]
